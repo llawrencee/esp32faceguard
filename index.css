@@ -1,0 +1,365 @@
+/* LIST OF COLORS */
+:root {
+  --red-primary: #ff5757;
+  --blue-primary: #005fdf;
+  --teal-primary: #44909b;
+  --green-primary: #7ed957;
+  --yellow-primary: #ffde59;
+  --white-primary: #f5f5f5;
+  --gray-primary: #737373;
+  --gray-secondary: #33343a;
+  --background-color: #1b1e26;
+
+  --sans-serif: "Roboto", sans-serif;
+  --serif: "Roboto Slab", serif;
+
+  --titlebar-height: 4.75rem;
+  --sidebar-width: 15vw;
+}
+
+.foreground-red-primary {
+  color: var(--red-primary);
+}
+
+.foreground-blue-primary {
+  color: var(--blue-primary);
+}
+
+.foreground-teal-primary {
+  color: var(--teal-primary);
+}
+
+.foreground-green-primary {
+  color: var(--green-primary);
+}
+
+.foreground-yellow-primary {
+  color: var(--yellow-primary);
+}
+
+.foreground-white-primary {
+  color: var(--white-primary);
+}
+
+.foreground-gray-primary {
+  color: var(--gray-primary);
+}
+
+.background-red-primary {
+  background-color: var(--red-primary);
+}
+
+.background-blue-primary {
+  background-color: var(--blue-primary);
+}
+
+.background-green-primary {
+  background-color: var(--green-primary);
+}
+
+.background-yellow-primary {
+  background-color: var(--yellow-primary);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--white-primary);
+  background-color: var(--background-color);
+  font-family: var(--sans-serif);
+}
+
+.titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: var(--titlebar-height);
+  padding-inline: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 2px solid var(--gray-secondary);
+}
+
+.titlebar__name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.titlebar__name > svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.titlebar__route {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+
+.titlebar__description {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.sidebar {
+  position: fixed;
+  top: var(--titlebar-height);
+  left: 0;
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--titlebar-height));
+
+  border-right: 2px solid var(--gray-secondary);
+}
+
+.sidebar__controls {
+  list-style: none;
+  height: 100%;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar__label {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+
+.sidebar__control > button {
+  font-size: 1.25rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+
+.sidebar__control > button > span {
+  font-size: 1.75rem;
+}
+
+.sidebar__control_end {
+  margin-top: auto;
+}
+
+main.body {
+  position: fixed;
+  top: var(--titlebar-height);
+  left: var(--sidebar-width);
+  width: calc(100vw - var(--sidebar-width));
+  height: calc(100vh - var(--titlebar-height));
+}
+
+.panel {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+
+.panel__monitor {
+  display: flex;
+  gap: 2rem;
+}
+
+.monitor__video_status {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.video_img {
+  border: 2px solid var(--gray-secondary);
+}
+
+.video_img > video {
+  -o-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.camera_status {
+  display: flex;
+  flex-direction: column;
+
+  border: 2px solid var(--gray-secondary);
+}
+
+.container_title {
+  padding: 0.5rem 1rem;
+
+  border-bottom: 2px solid var(--gray-secondary);
+}
+
+.container_title > h2 {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.container_body > ul {
+  padding: 0.675rem 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.675rem;
+}
+
+.container_body > ul > li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container_label {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.container_status {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.monitor__analytics_controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.analytics {
+  width: 360px;
+  height: 360px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.analytics > ul {
+  list-style: none;
+  height: 50%;
+
+  display: flex;
+  gap: 2rem;
+}
+
+.analytics > ul > li {
+  width: 50%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  border: 2px solid var(--gray-secondary);
+}
+
+.analytics > ul > li > .icon {
+  /* display: block; */
+  width: 35%;
+  height: 35%;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+}
+
+.analytics > ul > li > .icon > span {
+  font-size: 2.5rem;
+}
+
+.analytics > ul > li > .label {
+  font-size: 1rem;
+  font-weight: 300;
+
+  margin-block: 0.625rem 0.125rem;
+}
+
+.analytics > ul > li > .value {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.controls {
+  border: 2px solid var(--gray-secondary);
+}
+
+.controls .container_status > input[type="checkbox"] {
+  width: 0;
+  height: 0;
+
+  display: none;
+  visibility: none;
+}
+
+.controls .container_status > label {
+  position: relative;
+
+  width: 2rem;
+  height: 1rem;
+
+  display: block;
+
+  background-color: var(--gray-secondary);
+  border-radius: 100px;
+
+  transition: background-color 300ms ease;
+  cursor: pointer;
+}
+
+.controls .container_status > label:active::after {
+  transform: translateX(18%);
+}
+
+.controls .container_status > label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  translate: 0 -50%;
+
+  width: calc(1rem * 0.8);
+  height: calc(1rem * 0.8);
+
+  background-color: var(--white-primary);
+  border-radius: 50%;
+  transition: left 300ms ease, transform 300ms ease;
+}
+
+.controls .container_status > input[type="checkbox"]:checked + label {
+  background-color: var(--blue-primary);
+}
+
+.controls .container_status > input[type="checkbox"]:checked + label::after {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+
+.controls
+  .container_status
+  > input[type="checkbox"]:checked
+  + label:active::after {
+  transform: translateX(-118%);
+}

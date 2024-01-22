@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- IMPORT ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,300,0,0" />
+
+    <!-- IMPORT FONTS -->
+    <!-- CURRENTLY USING: ROBOTO, ROBOTO SLAB -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap"
+      rel="stylesheet" />
+
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="/index.css" />
+
+    <!-- IMPORT JS -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/face-api.min.js" defer></script>
+    <script src="/js/sidebar.js" defer></script>
+    <script src="/js/control.js" defer></script>
+
+    <script>
+      function blockMobileDevices() {
+        if (isMobileDevice()) {
+          const desktop_body = document.getElementById("desktop__container")
+          desktop_body.style.display = "none"
+          document.body.textContent = "401 Forbidden"
+        } else {
+          console.log("allowed")
+        }
+      }
+      window.onload = blockMobileDevices
+    </script>
+
+    <title>Monitor - ESP32FaceGuard</title>
+  </head>
+  <body>
+    <div id="desktop__container">
+      <header class="titlebar">
+        <div class="titlebar__name_route">
+          <h1 class="titlebar__name foreground-teal-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              zoomAndPan="magnify"
+              viewBox="0 0 375 374.999991"
+              preserveAspectRatio="xMidYMid meet"
+              version="1.0">
+              <rect
+                x="-37.5"
+                width="450"
+                fill="#ffffff"
+                y="-37.499999"
+                height="449.999989"
+                fill-opacity="1" />
+              <rect
+                x="-37.5"
+                width="450"
+                fill="#1b1e26"
+                y="-37.499999"
+                height="449.999989"
+                fill-opacity="1" />
+              <path
+                fill="#09a8fa"
+                d="M 321.953125 68.28125 L 320.3125 70.3125 L 273.4375 187.5 L 232.039062 110.359375 L 140.625 15.625 L 136.179688 15.25 C 152.4375 10.40625 169.664062 7.8125 187.5 7.8125 C 241 7.8125 289.03125 31.1875 321.953125 68.28125 Z M 321.953125 68.28125 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#09a8fa"
+                d="M 142.960938 110.359375 L 101.5625 187.5 L 46.875 296.875 L 45.648438 297.820312 C 21.9375 267.375 7.8125 229.085938 7.8125 187.5 C 7.8125 159.585938 14.171875 133.15625 25.53125 109.59375 L 31.25 110.359375 Z M 142.960938 110.359375 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#09a8fa"
+                d="M 343.75 264.640625 L 348.515625 267.367188 C 325.890625 312.875 284.546875 347.4375 234.554688 360.960938 L 234.375 359.375 L 142.960938 264.640625 Z M 343.75 264.640625 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#005fdf"
+                d="M 234.375 359.375 L 234.554688 360.960938 C 219.5625 365.023438 203.78125 367.1875 187.5 367.1875 C 129.84375 367.1875 78.53125 340.03125 45.648438 297.820312 L 46.875 296.875 L 101.5625 187.5 L 142.960938 264.640625 Z M 234.375 359.375 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#005fdf"
+                d="M 367.1875 187.5 C 367.1875 216.1875 360.46875 243.304688 348.515625 267.367188 L 343.75 264.640625 L 232.039062 264.640625 L 273.4375 187.5 L 320.3125 70.3125 L 321.953125 68.28125 C 350.09375 100 367.1875 141.75 367.1875 187.5 Z M 367.1875 187.5 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#005fdf"
+                d="M 140.625 15.625 L 232.039062 110.359375 L 31.25 110.359375 L 25.53125 109.59375 C 47.296875 64.429688 87.398438 29.757812 136.179688 15.25 Z M 140.625 15.625 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#1b1e26"
+                d="M 187.5 375 C 158.085938 375 129.921875 368.378906 103.792969 355.320312 C 78.882812 342.875 56.648438 324.652344 39.484375 302.621094 C 13.652344 269.453125 0 229.644531 0 187.5 C 0 159.007812 6.222656 131.65625 18.492188 106.199219 C 41.410156 58.648438 83.492188 22.769531 133.953125 7.761719 C 151.238281 2.613281 169.253906 0 187.5 0 C 241.070312 0 292.207031 22.996094 327.796875 63.09375 C 358.234375 97.40625 375 141.585938 375 187.5 C 375 216.773438 368.441406 244.8125 355.511719 270.84375 C 331.605469 318.929688 288.261719 354.527344 236.59375 368.503906 C 220.6875 372.8125 204.167969 375 187.5 375 Z M 187.5 15.625 C 170.765625 15.625 154.25 18.019531 138.410156 22.738281 C 92.15625 36.492188 53.582031 69.386719 32.570312 112.984375 C 21.324219 136.308594 15.625 161.378906 15.625 187.5 C 15.625 226.132812 28.136719 262.621094 51.8125 293.019531 C 84.664062 335.1875 134.117188 359.375 187.5 359.375 C 202.785156 359.375 217.929688 357.371094 232.511719 353.421875 C 279.871094 340.609375 319.601562 307.976562 341.519531 263.890625 C 353.367188 240.039062 359.375 214.339844 359.375 187.5 C 359.375 145.410156 344.007812 104.914062 316.109375 73.464844 C 283.484375 36.707031 236.609375 15.625 187.5 15.625 Z M 187.5 15.625 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#1b1e26"
+                d="M 232.039062 272.453125 L 142.960938 272.453125 C 140.082031 272.453125 137.4375 270.871094 136.078125 268.335938 L 94.679688 191.195312 C 93.441406 188.886719 93.441406 186.113281 94.679688 183.804688 L 136.078125 106.664062 C 137.4375 104.128906 140.082031 102.546875 142.960938 102.546875 L 232.039062 102.546875 C 234.917969 102.546875 237.5625 104.128906 238.921875 106.664062 L 280.320312 183.804688 C 281.558594 186.113281 281.558594 188.886719 280.320312 191.195312 L 238.921875 268.335938 C 237.5625 270.871094 234.917969 272.453125 232.039062 272.453125 Z M 147.636719 256.828125 L 227.367188 256.828125 L 264.570312 187.5 L 227.363281 118.171875 L 147.636719 118.171875 L 110.429688 187.5 Z M 147.636719 256.828125 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#1b1e26"
+                d="M 232.039062 118.171875 C 229.992188 118.171875 227.949219 117.375 226.417969 115.785156 L 135.003906 21.050781 C 132.007812 17.945312 132.09375 13 135.199219 10.003906 C 138.304688 7.007812 143.25 7.09375 146.246094 10.199219 L 237.660156 104.933594 C 240.65625 108.039062 240.570312 112.984375 237.464844 115.980469 C 235.949219 117.445312 233.992188 118.171875 232.039062 118.171875 Z M 232.039062 118.171875 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#1b1e26"
+                d="M 234.375 367.1875 C 232.328125 367.1875 230.285156 366.390625 228.753906 364.800781 L 137.339844 270.066406 C 134.34375 266.960938 134.433594 262.015625 137.535156 259.019531 C 140.640625 256.023438 145.585938 256.109375 148.582031 259.214844 L 239.996094 353.949219 C 242.992188 357.054688 242.90625 362 239.800781 364.996094 C 238.285156 366.460938 236.328125 367.1875 234.375 367.1875 Z M 234.375 367.1875 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#1b1e26"
+                d="M 273.433594 195.316406 C 272.46875 195.316406 271.488281 195.136719 270.535156 194.753906 C 266.53125 193.152344 264.582031 188.605469 266.183594 184.597656 L 313.058594 67.410156 C 314.660156 63.40625 319.210938 61.457031 323.214844 63.058594 C 327.21875 64.660156 329.167969 69.207031 327.566406 73.214844 L 280.691406 190.402344 C 279.46875 193.457031 276.535156 195.316406 273.433594 195.316406 Z M 273.433594 195.316406 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#1b1e26"
+                d="M 46.867188 304.6875 C 45.695312 304.6875 44.503906 304.421875 43.382812 303.863281 C 39.523438 301.933594 37.957031 297.238281 39.886719 293.382812 L 94.574219 184.007812 C 96.503906 180.148438 101.199219 178.582031 105.058594 180.511719 C 108.917969 182.441406 110.480469 187.136719 108.550781 190.992188 L 53.863281 300.367188 C 52.492188 303.105469 49.734375 304.6875 46.867188 304.6875 Z M 46.867188 304.6875 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#1b1e26"
+                d="M 142.960938 118.171875 L 31.25 118.171875 C 26.933594 118.171875 23.4375 114.675781 23.4375 110.359375 C 23.4375 106.042969 26.933594 102.546875 31.25 102.546875 L 142.960938 102.546875 C 147.277344 102.546875 150.773438 106.042969 150.773438 110.359375 C 150.773438 114.675781 147.277344 118.171875 142.960938 118.171875 Z M 142.960938 118.171875 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+              <path
+                fill="#1b1e26"
+                d="M 343.75 272.453125 L 232.039062 272.453125 C 227.726562 272.453125 224.226562 268.953125 224.226562 264.640625 C 224.226562 260.328125 227.726562 256.828125 232.039062 256.828125 L 343.75 256.828125 C 348.0625 256.828125 351.5625 260.328125 351.5625 264.640625 C 351.5625 268.953125 348.0625 272.453125 343.75 272.453125 Z M 343.75 272.453125 "
+                fill-opacity="1"
+                fill-rule="nonzero" />
+            </svg>
+            ESP32FaceGuard
+          </h1>
+          <h3 class="titlebar__route">
+            <span class="route__inactive foreground-gray-primary"></span>
+            <span class="route__active"></span>
+          </h3>
+        </div>
+        <h2 class="titlebar__description foreground-gray-primary">
+          powered by
+          <span style="display: flex">
+            <span class="foreground-blue-primary">face-api</span>
+            .
+            <span class="foreground-yellow-primary">js</span>
+          </span>
+        </h2>
+      </header>
+      <nav class="sidebar">
+        <ul class="sidebar__controls">
+          <li class="sidebar__label foreground-gray-primary">MAIN</li>
+          <li class="sidebar__control">
+            <button
+              class="foreground-white-primary"
+              data-action="open_dashboard">
+              <span class="material-symbols-sharp"> dashboard </span>Dashboard
+            </button>
+          </li>
+          <li class="sidebar__label foreground-gray-primary">CONTROLS</li>
+          <li class="sidebar__control">
+            <button
+              class="foreground-white-primary"
+              data-action="open_monitor_camera">
+              <span class="material-symbols-sharp"> linked_camera </span>Monitor
+            </button>
+          </li>
+          <li class="sidebar__control">
+            <button
+              class="foreground-white-primary"
+              data-action="open_add_face">
+              <span class="material-symbols-sharp"> person_add </span>Add Face
+            </button>
+          </li>
+          <li class="sidebar__control sidebar__control_end">
+            <button
+              class="foreground-white-primary"
+              data-action="open_settings">
+              <span class="material-symbols-sharp"> settings </span>Settings
+            </button>
+          </li>
+          <li class="sidebar__control">
+            <button class="foreground-white-primary" data-action="reload_page">
+              <span class="material-symbols-sharp"> restart_alt </span>Reload
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <main class="body">
+        <section class="panel panel__dashboard" style="display: none">
+          dashboard
+        </section>
+        <section class="panel panel__monitor" style="display: flex">
+          <div class="monitor__video_status">
+            <div class="video_img">
+              <video
+                id="webcam-video"
+                width="100%"
+                height="433.5"
+                autoplay
+                muted></video>
+            </div>
+
+            <div class="camera_status">
+              <div class="container_title">
+                <h2>Status</h2>
+              </div>
+              <div class="container_body">
+                <ul>
+                  <li>
+                    <span class="container_label foreground-gray-primary">
+                      Video
+                    </span>
+                    <span
+                      class="container_status foreground-red-primary"
+                      id="status_video">
+                      Inactive
+                    </span>
+                  </li>
+                  <li>
+                    <span class="container_label foreground-gray-primary">
+                      Errors
+                    </span>
+                    <span
+                      class="container_status foreground-green-primary"
+                      id="status_error">
+                      None
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="monitor__analytics_controls">
+            <div class="analytics">
+              <ul>
+                <li>
+                  <h1 class="icon background-yellow-primary">
+                    <span class="material-symbols-sharp"> person_search </span>
+                  </h1>
+                  <h3 class="label foreground-gray-primary">Detected Faces</h3>
+                  <h2 class="value">0</h2>
+                </li>
+                <li>
+                  <h1 class="icon background-blue-primary">
+                    <span class="material-symbols-sharp"> percent </span>
+                  </h1>
+                  <h3 class="label foreground-gray-primary">
+                    Highest Certainty
+                  </h3>
+                  <h2 class="value">0%</h2>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <h1 class="icon background-green-primary">
+                    <span class="material-symbols-sharp"> person_check </span>
+                  </h1>
+                  <h3 class="label foreground-gray-primary">Known Faces</h3>
+                  <h2 class="value">0</h2>
+                </li>
+                <li>
+                  <h1 class="icon background-red-primary">
+                    <span class="material-symbols-sharp"> person_cancel </span>
+                  </h1>
+                  <h3 class="label foreground-gray-primary">Unknown Faces</h3>
+                  <h2 class="value">0</h2>
+                </li>
+              </ul>
+            </div>
+            <div class="controls">
+              <div class="container_title">
+                <h2>Controls</h2>
+              </div>
+              <div class="container_body">
+                <ul>
+                  <li>
+                    <span class="container_label foreground-gray-primary">
+                      Start Webcam
+                    </span>
+                    <span class="container_status">
+                      <input type="checkbox" id="toggle_video_capture" />
+                      <label for="toggle_video_capture"></label>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="container_label foreground-gray-primary">
+                      Face Detection
+                    </span>
+                    <span class="container_status">
+                      <input type="checkbox" id="toggle_face_detection" />
+                      <label for="toggle_face_detection"></label>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="container_label foreground-gray-primary">
+                      Face Recognition
+                    </span>
+                    <span class="container_status">
+                      <input type="checkbox" id="toggle_face_recognition" />
+                      <label for="toggle_face_recognition"></label>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="container_label foreground-gray-primary">
+                      Expression Recognition
+                    </span>
+                    <span class="container_status">
+                      <input
+                        type="checkbox"
+                        id="toggle_expression_recognition" />
+                      <label for="toggle_expression_recognition"></label>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="container_label foreground-gray-primary">
+                      Object Fit
+                    </span>
+                    <span class="container_status">
+                      <input type="checkbox" id="toggle_object_fit" />
+                      <label for="toggle_object_fit"></label>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="panel panel__add_face">add_face</section>
+        <section class="panel panel__settings">settings</section>
+      </main>
+    </div>
+  </body>
+</html>
